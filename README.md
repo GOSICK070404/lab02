@@ -248,9 +248,9 @@ $ gist REPORT.md
 ## Homework
 
 ### Part I
-
 1. Создайте пустой репозиторий на сервисе github.com (или gitlab.com, или bitbucket.com).
 2. Выполните инструкцию по созданию первого коммита на странице репозитория, созданного на предыдещем шаге.
+```sh
 ┌──(kali㉿kali)-[~]
 └─$ cd ~/GOSICK070404/workspace/
                                                                                                                     
@@ -335,7 +335,9 @@ remote:      https://github.com/GOSICK070404/lab02dz/pull/new/master
 remote: 
 To https://github.com/GOSICK070404/lab02dz
  * [new branch]      master -> master
+  ```
 3. Создайте файл `hello_world.cpp` в локальной копии репозитория (который должен был появиться на шаге 2). Реализуйте программу **Hello world** на языке C++ используя плохой стиль кода. Например, после заголовочных файлов вставьте строку `using namespace std;`.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ mkdir sources
                                                                                                                     
@@ -348,29 +350,34 @@ To https://github.com/GOSICK070404/lab02dz
 > return 0;
 > }
 heredoc> EOF
-
+```
 4. Добавьте этот файл в локальную копию репозитория.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git add sources/hello_world.cpp
-
+```
 5. Закоммитьте изменения с *осмысленным* сообщением.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git commit -m"added hello_world.cpp"
 [master 7c56502] added hello_world.cpp
  1 file changed, 6 insertions(+)
  create mode 100644 sources/hello_world.cpp
-
+```
 6. Изменитьте исходный код так, чтобы программа через стандартный поток ввода запрашивалось имя пользователя. А в стандартный поток вывода печаталось сообщение `Hello world from @name`, где `@name` имя пользователя.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ edit sources/hello_world.cpp
-
+```
 7. Закоммитьте новую версию программы. Почему не надо добавлять файл повторно `git add`?
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git commit -m"fixed hello_world.cpp"
 [master 2e6fcfb] fixed hello_world.cpp
  1 file changed, 1 insertion(+), 1 deletion(-)
-
+```
 8. Запуште изменения в удалёный репозиторий.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$  git push origin master 
 Username for 'https://github.com': GOSICK070404
@@ -383,23 +390,26 @@ Writing objects: 100% (8/8), 845 bytes | 845.00 KiB/s, done.
 Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://github.com/GOSICK070404/lab02dz
    d774c8f..2e6fcfb  master -> master
-
+```
 9. Проверьте, что история коммитов доступна в удалёный репозитории.
 
 ### Part II
 
 **Note:** *Работать продолжайте с теми же репоззиториями, что и в первой части задания.*
 1. В локальной копии репозитория создайте локальную ветку `patch1`.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$  git checkout -b patch1
 Switched to a new branch 'patch1'
-
+```
 2. Внесите изменения в ветке `patch1` по исправлению кода и избавления от `using namespace std;`.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ edit sources/hello_world.cpp
-
+```
 3. **commit**, **push** локальную ветку в удалённый репозиторий.
-┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
+```sh
+──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git commit -m"fixed hello_world.cpp"
 On branch patch1
 Changes not staged for commit:
@@ -433,11 +443,12 @@ remote:      https://github.com/GOSICK070404/lab02dz/pull/new/patch1
 remote: 
 To https://github.com/GOSICK070404/lab02dz
  * [new branch]      patch1 -> patch1
-                                                                            
+     ```                                                                       
 4. Проверьте, что ветка `patch1` доступна в удалёный репозитории.
 5. Создайте pull-request `patch1 -> master`.
 6. В локальной копии в ветке `patch1` добавьте в исходный код комментарии.
 7. **commit**, **push**.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ edit sources/hello_world.cpp
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
@@ -460,10 +471,11 @@ Writing objects: 100% (4/4), 444 bytes | 444.00 KiB/s, done.
 Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://github.com/GOSICK070404/lab02dz
    7e7ef5d..b59f637  patch1 -> patch1
-
+```
 8. Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request
 9. В удалённый репозитории выполните  слияние PR `patch1 -> master` и удалите ветку `patch1` в удаленном репозитории.
 10. Локально выполните **pull**.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git pull origin main
 remote: Enumerating objects: 3, done.
@@ -474,9 +486,10 @@ Unpacking objects: 100% (3/3), 1.19 KiB | 1.19 MiB/s, done.
 From https://github.com/GOSICK070404/lab02dz
  * branch            main       -> FETCH_HEAD
  * [new branch]      main       -> origin/main
-
+```
 11. С помощью команды **git log** просмотрите историю в локальной версии ветки `master`.
-  ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
+```sh
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$  git log        
 commit b59f637efaa6c3e43d7867cfb4a689d0b7586a1f (HEAD -> patch1, origin/patch1)
 Author: GOSICK070404 <poliakovam@ya.ru>
@@ -507,8 +520,9 @@ Author: GOSICK070404 <poliakovam@ya.ru>
 Date:   Mon May 29 14:33:24 2023 -0400
 
     added README.md
-
+```
 12. Удалите локальную ветку `patch1`.
+```sh
 ──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git branch --delete patch1 
 error: Cannot delete branch 'patch1' checked out at '/home/kali/GOSICK070404/workspace/projects/lab02_homework'
@@ -525,17 +539,19 @@ If you are sure you want to delete it, run 'git branch -D patch1'.
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git branch -D patch1 
 Deleted branch patch1 (was b59f637).
-                                                                                      
+```                                                                                      
 
 ### Part III
 
 **Note:** *Работать продолжайте с теми же репоззиториями, что и в первой части задания.*
 1. Создайте новую локальную ветку `patch2`.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git checkout -b patch2
 Switched to a new branch 'patch2'
-
+```
 2. Измените *code style* с помощью утилиты [**clang-format**](http://clang.llvm.org/docs/ClangFormat.html). Например, используя опцию `-style=Mozilla`.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ clang-format -i --style=Mozilla sources/hello_world.cpp
 Command 'clang-format' not found, but can be installed with:
@@ -547,8 +563,9 @@ Reading package lists... Done
 Building dependency tree... Done
 Reading state information... Done
 E: Unable to locate package clang-format
-
+```
 3. **commit**, **push**, создайте pull-request `patch2 -> master`.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git add sources/hello_world.cpp 
                                                                                                                     
@@ -567,9 +584,10 @@ remote:      https://github.com/GOSICK070404/lab02dz/pull/new/patch2
 remote: 
 To https://github.com/GOSICK070404/lab02dz
  * [new branch]      patch2 -> patch2
-
+```
 4. В ветке **master** в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
-  ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
+```sh
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ edit sources/hello_world.cpp
                                                                                                                     
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
@@ -603,22 +621,24 @@ Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 To https://github.com/GOSICK070404/lab02dz
    2e6fcfb..eb5cb23  patch2 -> patch2
-
+```
 5. Убедитесь, что в pull-request появились *конфликтны*.
 6. Для этого локально выполните **pull** + **rebase** (точную последовательность команд, следует узнать самостоятельно). **Исправьте конфликты**.
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git pull --rebase origin patch2
 From https://github.com/GOSICK070404/lab02dz
  * branch            patch2     -> FETCH_HEAD
 Already up to date.
-
+```
 7. Сделайте *force push* в ветку `patch2`
+```sh
 ┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab02_homework]
 └─$ git push origin patch2 --force
 Username for 'https://github.com': GOSICK070404
 Password for 'https://GOSICK070404@github.com': 
 Everything up-to-date
-
+```
 8. Убедитель, что в pull-request пропали конфликтны. 
 9. Вмержите pull-request `patch2 -> master`.
 
