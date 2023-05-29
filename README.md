@@ -20,7 +20,7 @@ $ open https://git-scm.com
 $ export GITHUB_USERNAME=<имя_пользователя>
 $ export GITHUB_EMAIL=<адрес_почтового_ящика>
 $ export GITHUB_TOKEN=<сгенирированный_токен>
-$ alias edit=<nano|vi|vim|subl>
+$ alias edit=nano
 ```
 
 ```sh
@@ -30,6 +30,7 @@ $ source scripts/activate
 
 ```sh
 $ mkdir ~/.config
+mkdir: cannot create directory ‘/home/kali/.config’: File exists
 $ cat > ~/.config/hub <<EOF
 github.com:
 - user: ${GITHUB_USERNAME}
@@ -42,17 +43,57 @@ $ git config --global hub.protocol https
 ```sh
 $ mkdir projects/lab02 && cd projects/lab02
 $ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint:   git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/kali/GOSICK070404/workspace/projects/lab02/.git/
+
 $ git config --global user.name ${GITHUB_USERNAME}
 $ git config --global user.email ${GITHUB_EMAIL}
 # check your git global settings
 $ git config -e --global
 $ git remote add origin https://github.com/${GITHUB_USERNAME}/lab02.git
 $ git pull origin master
+fatal: couldn't find remote ref master
 $ touch README.md
 $ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+ 
 $ git add README.md
 $ git commit -m"added README.md"
+master (root-commit) 79906cb] added README.md
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README.md
+
 $ git push origin master
+Username for 'https://github.com': GOSICK070404
+Password for 'https://GOSICK070404@github.com': 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 222 bytes | 74.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/GOSICK070404/lab02/pull/new/master
+remote: 
+To https://github.com/GOSICK070404/lab02.git
+ * [new branch]      master -> master
+
 ```
 
 Добавить на сервисе **GitHub** в репозитории **lab02** файл **.gitignore**
@@ -67,7 +108,17 @@ $ git push origin master
 
 ```sh
 $ git pull origin master
+From https://github.com/GOSICK070404/lab02
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
 $ git log
+commit 79906cbfdf5abaf74615d60e22aa79f17398cd63 (HEAD -> master, origin/master)
+Author: GOSICK070404 <poliakovam@ya.ru>
+Date:   Mon May 29 13:16:17 2023 -0400
+
+    added README.md
+                          
 ```
 
 ```sh
@@ -131,9 +182,41 @@ $ edit README.md
 
 ```sh
 $ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        examples/
+        include/
+        sources/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
 $ git add .
 $ git commit -m"added sources"
+[master 115ee7f] added sources
+ 5 files changed, 33 insertions(+)
+ create mode 100644 examples/example1.cpp
+ create mode 100644 examples/example2.cpp
+ create mode 100644 include/print.hpp
+ create mode 100644 sources/print.cpp
+
 $ git push origin master
+Username for 'https://github.com': GOSICK070404
+Password for 'https://GOSICK070404@github.com': 
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (10/10), 919 bytes | 229.00 KiB/s, done.
+Total 10 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/GOSICK070404/lab02.git
+   79906cb..115ee7f  master -> master
+
 ```
 
 ## Report
