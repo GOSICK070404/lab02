@@ -1,4 +1,4 @@
-## Laboratory work II
+## Laboratory work II by Polyakov Andrey IU8-21
 
 Данная лабораторная работа посвещена изучению систем контроля версий на примере **Git**.
 
